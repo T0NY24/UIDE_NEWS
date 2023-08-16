@@ -1,0 +1,37 @@
+<!-- Category News Slider Start -->
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      {% for category, news_items in articulos_categorizados.items() %}
+      <div class="col-lg-6 py-3">
+        <div class="bg-light py-2 px-4 mb-3">
+          <h3 class="m-0">{{ category }}</h3>
+        </div>
+        <div
+          class="owl-carousel owl-carousel-3 carousel-item-2 position-relative"
+        >
+          {% for news in news_items %}
+          <div class="position-relative">
+            <img
+              class="img-fluid w-100" 
+              src="{{ url_for('static', filename='' + news['ImagenUrl']) }}"
+              style="object-fit: cover"
+              alt="Imagen de la noticia"
+            />
+            <div class="overlay position-relative bg-light">
+              <div class="mb-2" style="font-size: 13px">
+                <a href="">{{ news['Categoria'] }}</a>
+                <span class="px-1">/</span>
+                <span>{{ news['Fecha_publicacion'] }}</span>
+              </div>
+              <a class="h4 m-0" href="">{{ news['Titulo'] }}</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<!-- Category News Slider End -->

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Categorias</title>
+    </head>
+
+    <body>
+        <h1>Seleccionar Método</h1>
+        <form method="post" id="metodoForm">
+            <label for="Metodos">Métodos</label>
+            <select name="Metodos" id="Metodos">
+                <option value="get">Mostrar</option>
+                <option value="post">Agregar</option>
+                <option value="delete">Eliminar</option>
+                <option value="update">Actualizar</option>
+            </select>
+        </form>
+        <div id="get">
+            {% for categoria in categorias %}
+            <div class="categoria">
+                <p>{{categoria['Nombre']}}</p>
+                <p>{{categoria['Descripcion']}}</p>
+                <p>{{categoria['_id']}}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div id="post" style="display: none;">
+            <form action="/categoria" method="post">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcion" name="descripcion" required>
+                <button type="submit">Agregar</button>
+            </form>
+        </div>
+        <div id="delete" style="display: none;">
+            <form action="/categoria/eliminar" method="post">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id" required>
+                <button type="submit">Eliminar</button>
+            </form>
+        </div>
+        <div id="update" style="display: none;">
+            <form action="/categoria/actualizar" method="post">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <br>
+                <label for="nuevoNombre">Nuevo Nombre:</label>
+                <input type="text" id="nuevoNombre" name="nuevoNombre" required>
+                <label for="nuevaDescripcion">Nueva Descripción:</label>
+                <input type="text" id="nuevaDescripcion" name="nuevaDescripcion"
+                    required>
+                <button type="submit">Actualizar</button>
+            </form>
+        </body>
+        <script>
+    document.getElementById("metodoForm").addEventListener("change", function (event) {
+        event.preventDefault();
+        var selectedValue = document.getElementById("Metodos").value;
+
+        var elements = ["get", "post", "delete", "update"];
+
+        for (var i = 0; i < elements.length; i++) {
+            var element = document.getElementById(elements[i]);
+            if (elements[i] === selectedValue) {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+
+        // if (selectedValue === "Post") {
+        //     var newForm = document.createElement("form");
+        //     newForm.action = "/agregarCategoria";
+        //     newForm.method = "post";
+
+        //     var nombreLabel = document.createElement("label");
+        //     nombreLabel.textContent = "Nombre:";
+        //     var nombreInput = document.createElement("input");
+        //     nombreInput.type = "text";
+        //     nombreInput.id = "nombre";
+        //     nombreInput.name = "nombre";
+        //     nombreInput.required = true;
+        //     newForm.appendChild(nombreLabel);
+        //     newForm.appendChild(nombreInput);
+        //     newForm.appendChild(document.createElement("br"));
+
+        //     var descripcionLabel = document.createElement("label");
+        //     descripcionLabel.textContent = "Descripción:";
+        //     var descripcionInput = document.createElement("input");
+        //     descripcionInput.type = "text";
+        //     descripcionInput.id = "descripcion";
+        //     descripcionInput.name = "descripcion";
+        //     descripcionInput.required = true;
+        //     newForm.appendChild(descripcionLabel);
+        //     newForm.appendChild(descripcionInput);
+        //     newForm.appendChild(document.createElement("br"));
+
+        //     var submitButton = document.createElement("input");
+        //     submitButton.type = "submit";
+        //     submitButton.value = "Agregar";
+        //     newForm.appendChild(submitButton);
+        //     document.body.appendChild(newForm);
+        // }
+    });
+</script>
+
+    </html>

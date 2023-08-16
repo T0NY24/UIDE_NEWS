@@ -1,0 +1,68 @@
+<!-- Navbar Start -->
+<div class="container-fluid p-0 mb-3">
+    <nav class="navbar navbar-expand-lg bg-light navbar-light py-2 py-lg-0 px-lg-5">
+        <a href class="navbar-brand d-block d-lg-none">
+            <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">UIDE</span>
+                NEWS</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+            <div class="navbar-nav mr-auto py-0">
+                <a href="https://www.uide.edu.ec/por-que-elegir-la-universidad-internacional-del-ecuador/" class="nav-item nav-link active">Home</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Carreras</a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="https://www.uide.edu.ec/pregrado-presencial/loja/facultad-de-ciencias-tecnicas/ingenieria-en-tecnologias-de-la-informacion/" class="dropdown-item">Tics</a>
+                        <a href="https://www.uide.edu.ec/pregrado-presencial/loja/facultad-de-jurisprudencia-ciencias-sociales-y-humanidades-andres-f-cordova/derecho/" class="dropdown-item">Derecho</a>
+                        <a href="https://www.uide.edu.ec/pregrado-presencial/loja/facultad-arquitectura-urbanismo-y-ciudad/arquitectura/" class="dropdown-item">Arquitectura</a>
+                        <a href="https://www.uide.edu.ec/pregrado-presencial/loja/business-school/marketing/" class="dropdown-item">Marketing</a>
+                        <a href="https://www.uide.edu.ec/pregrado-presencial/loja/facultad-de-ciencias-medicas-de-la-salud-y-la-vida/psicologia/" class="dropdown-item">Psicologia</a>
+                    </div>
+                </div>
+                <a href="https://www.uide.edu.ec/mas-informacion-loja/" class="nav-item nav-link">Contact</a>
+                <!-- <button id="add-link-btn" class="btn btn-primary">Add Link</button> -->
+            </div>
+        <form onsubmit="search()"></form>
+            <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
+                <input type="text" class="form-control" placeholder="BUSCADOR">
+                <div class="input-group-append">
+                    <button class="input-group-text text-secondary"><i class="fa fa-search"></i></button>
+                    <script>
+                        
+                        function search() {
+                            // Obtiene el valor del input del buscador
+                            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+                    
+                            // Obtén todos los elementos donde se realizará la búsqueda (puedes adaptarlo según tu estructura HTML)
+                            const elementsToSearch = document.querySelectorAll('.text-truncate a');
+                    
+                            // Recorre cada elemento y verifica si contiene la palabra buscada
+                            elementsToSearch.forEach(element => {
+                                const text = element.textContent.toLowerCase();
+                                if (text.includes(searchTerm)) {
+                                    // Si se encuentra la palabra, muestra el elemento (puedes adaptar esto según tus necesidades)
+                                    element.style.display = 'block';
+                                } else {
+                                    // Si no se encuentra la palabra, oculta el elemento (puedes adaptar esto según tus necesidades)
+                                    element.style.display = 'none';
+                                }
+                            });
+                    
+                            // Evita que se envíe el formulario y se refresque la página
+                            return false;
+                        }
+                        
+                    </script>
+                    
+                </div>
+            </div>
+        </form>
+            <div class="navbar-nav py-0 px-lg-3">
+                <a href="{{ url_for('login') }}" class="nav-item nav-link active">Ingreso</a>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Navbar End -->

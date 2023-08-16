@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog de Noticias</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/blog.css') }}"
+    />
+  </head>
+
+  <body>
+    <header>
+      <h1>Blog de Noticias</h1>
+    </header>
+
+    <section id="news-form-section">
+      <h2>Publicar Noticia</h2>
+      <form id="news-form" action="/blog" method="post">
+        <div class="input-box">
+          <label for="title">Titulo</label>
+          <textarea
+            id="title"
+            name="title"
+            placeholder="Titulo"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+
+        <div class="input-box">
+          <label for="title">Autor</label>
+          <textarea
+            id="author"
+            name="author"
+            placeholder="Autor"
+            rows="1"
+            required
+          ></textarea>
+        </div>
+
+        <div class="input-box">
+          <label for="content">Contenido</label>
+          <textarea
+            id="content"
+            name="content"
+            placeholder="Contenido"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+
+        <div class="input-box">
+          <label for="category">Categoria</label>
+          <select id="category" name="category">
+            {% for categoria in categorias %}
+            <option value="{{categoria['Nombre']}}">
+              {{categoria['Nombre']}}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="input-box">
+          <label for="image">Imagen:</label>
+          <input
+            type="file"
+            name="image"
+            id="image"
+            accept="image/*"
+            required
+          />
+        </div>
+        <button class="btn">Publicar</button>
+      </form>
+    </section>
+
+    <section id="news-section">
+      <h2>Noticias Recientes</h2>
+      <div id="news-container">
+        {% for articulo in articulos %}
+        <div class="news-card">
+          <div class="news-card-header">
+            <h3 class="news-card-title">{{ articulo['Titulo'] }}</h3>
+            <div class="news-card-meta">
+              <p class="news-card-author">{{ articulo['Autor'] }}</p>
+              <p class="news-card-date">{{ articulo['Fecha_publicacion'] }}</p>
+            </div>
+          </div>
+          <div class="news-card-content">
+            <p class="news-card-text">{{ articulo['Contenido'] }}</p>
+          </div>
+          <div class="news-card-footer">
+            <p class="news-card-category">{{ articulo['Categoria'] }}</p>
+            <img
+              src="{{ url_for('static', filename='' + articulo['ImagenUrl']) }}"
+              alt="Imagen de la noticia"
+            />
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/blog.js') }}"></script>
+  </body>
+</html>

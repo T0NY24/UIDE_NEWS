@@ -1,0 +1,9 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.chart-container {
+    width: 50%;
+    margin: 20px auto;
+}
