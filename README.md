@@ -1,1 +1,66 @@
-# UIDE_NEWS
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>UIDE NEWS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <link rel="icon" href="{{ url_for('static', filename='img/logouide.png') }}" type="image/x-icon">
+    
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">   
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <img src="{{ url_for('static', filename='img/fondo3.jpg') }}" alt="Fondo" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
+
+    {% include 'components/Topbar.html' %}
+
+    {% include 'components/Navbar.html' %}
+  
+    {% include 'components/TopNews.html' %}
+
+    {% include 'components/MainNews.html' %}
+    
+    {% include 'components/FeaturedNews.html'  %}
+                
+    {% include 'components/CategoryNews.html' %}
+    
+    {% include 'components/NewsSidebar.html' %}           
+       
+    {% include 'components/Footer.html' %}
+        
+    {% include 'components/BackToTop.html' %}
+</body>
+
+
+    
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+<script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+<!-- Contact Javascript File -->
+<script src="{{ url_for('static', filename='mail/jqBootstrapValidation.min.js') }}"></script>
+<script src="{{ url_for('static', filename='mail/contact.js') }}"></script>
+
+<!-- Template Javascript -->
+<script src="{{ url_for('static', filename='js/main.js') }}" ></script>
+</html>
